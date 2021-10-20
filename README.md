@@ -1,6 +1,6 @@
 # Bridge Keeper
 
-Simple Flutter applicaiton.
+Simple Flutter application.
 
 To build:
 
