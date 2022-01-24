@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/image.dart';
+import 'dart:math';
 import './quiz.dart';
 import './result.dart';
 
@@ -15,6 +16,7 @@ class BridgeKeeper extends StatefulWidget {
 
 class _BridgeKeeper extends State<BridgeKeeper> {
   var _questionIndex = 0;
+  var _questionCount = 0;
   var _totalScore = 0;
 
   final _questions = const [
@@ -27,11 +29,27 @@ class _BridgeKeeper extends State<BridgeKeeper> {
       ]
     },
     {
+      'questionText': 'What is your quest?',
+      'answers': [
+        {'text': 'To bravely turn my tail and flee', 'score': 10},
+        {'text': 'To seek the Holy Grail', 'score': 1},
+        {'text': 'To burn more witches', 'score': 10},
+      ]
+    },
+    {
       'questionText': 'What is your favorite color?',
       'answers': [
         {'text': 'Blue', 'score': 1},
         {'text': 'Blue. No, yellow!', 'score': 10},
         {'text': 'Red', 'score': 1},
+      ]
+    },
+    {
+      'questionText': 'What is the capital of Assyria?',
+      'answers': [
+        {'text': 'Aššur,', 'score': 1},
+        {'text': 'Huh? I-- I don\'t know that!', 'score': 10},
+        {'text': 'Dur-Athara', 'score': 10},
       ]
     },
     {
@@ -41,7 +59,7 @@ class _BridgeKeeper extends State<BridgeKeeper> {
         {'text': '42!', 'score': 10},
         {
           'text': 'What do you mean? An African or European swallow?',
-          'score': 1
+          'score': 100
         },
       ]
     },
@@ -50,6 +68,7 @@ class _BridgeKeeper extends State<BridgeKeeper> {
   void _restartQuest() {
     setState(() {
       _questionIndex = 0;
+      _questionCount = 0;
       _totalScore = 0;
     });
   }
@@ -59,11 +78,16 @@ class _BridgeKeeper extends State<BridgeKeeper> {
 
     setState(() {
       _questionIndex = _questionIndex + 1;
+      _questionCount = _questionCount + 1;
+      if(_questionCount > 1) {
+        final rnd = new Random();
+        _questionIndex = 2 + rnd.nextInt(3);
+      }
       if (_questionIndex >= _questions.length) {
         //_questionIndex = 0;
       }
     });
-    print(_questionIndex);
+    print("Index is: $_questionIndex");
   }
 
   Widget build(BuildContext context) {
@@ -83,7 +107,7 @@ class _BridgeKeeper extends State<BridgeKeeper> {
             fit: BoxFit.cover,
           ),
         ),
-        child: ((_questionIndex < _questions.length) && (_totalScore < 10))
+        child: ((_questionCount < 3) && (_totalScore < 10))
             ? Quiz(
                 answerQuestion: _answerQuestion,
                 questionIndex: _questionIndex,

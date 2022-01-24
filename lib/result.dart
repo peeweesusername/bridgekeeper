@@ -12,7 +12,9 @@ class Result extends StatelessWidget {
     var resultText =
         'You walk across the bridge over the Gorge of Eternal Peril';
 
-    if (resultScore >= 10) {
+    if (resultScore >= 100) {
+      resultText = 'The Bridge Keeper is cast into the Gorge of Eternal Peril';
+    } else if (resultScore >= 10) {
       resultText = 'You are cast into the Gorge of Eternal Peril';
     }
 

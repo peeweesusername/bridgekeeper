@@ -66,6 +66,9 @@ flutter:
     - assets/whatisyourfavoritecolor.mp3
     - assets/whatisyourname.mp3
     - assets/offyougo.mp3
+    - assets/whatisyourquest.mp3
+    - assets/bridgekeepercastintogorge.mp3
+    - assets/whatisthecapitalofassyria.mp3
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

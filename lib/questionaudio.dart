@@ -11,7 +11,13 @@ class QuestionAudio extends StatelessWidget {
       "soundfn": "whatisyourname.mp3",
     },
     {
+      "soundfn": "whatisyourquest.mp3",
+    },
+    {
       "soundfn": "whatisyourfavoritecolor.mp3",
+    },
+    {
+      "soundfn": "whatisthecapitalofassyria.mp3",
     },
     {
       "soundfn": "whatistheairspeedvelocity.mp3",
